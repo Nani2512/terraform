@@ -1,11 +1,11 @@
 variable "bucketname" {
     description = "s3 bucket value"
     type = string
-    default = "nareshnanibucket"
+    default = "naribucket"
   
 }
 variable "region" {
   type = string
-    default = "us-west-2"
+    default = "us-east-1"
   
 }
