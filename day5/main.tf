@@ -1,15 +1,18 @@
-resource "aws_instance" "name" {
-    ami="ami-066784287e358dad1"
-instance_type = "t2.micro"
-key_name = "mykeypair"
-availability_zone = "us-east-1a"
-
-tags = {
-  Name=  "backendtest"
-}
+#store stateflie in s3 bucket
+resource "aws_s3_bucket" "test" {
+  bucket = "mynareshnaninewbucket"
 
 }
-resource "aws_s3_bucket" "name" {
-  bucket = "newnaribucketaws"
-  
+#locking provision for statefile
+resource "aws_dynamodb_table" "dynamobd-ferraform-state-lockfile" {
+  name           = "terraform-state-lock-dynmo"
+  hash_key       = "LockID"
+  read_capacity  = 20
+  write_capacity = 20
+
+  attribute {
+    name = "LockID"
+    type = "S"
+
+  }
 }
