@@ -54,7 +54,7 @@ resource "aws_eip" "name" {
 }
 #create Nat gateway
 resource "aws_nat_gateway" "nat" {
-  subnet_id     = aws_subnet.public.id
+  subnet_id     = aws_subnet.private.id
   allocation_id = aws_eip.name.id
 
   tags = {
