@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+    stages {
+        stage('git clone') {
+            steps{
+                git branch: 'main', url: 'https://github.com/Nani2512/terraform.git'
+            }
+        }
+        stage('init') {
+            steps {
+               dir('day1-ec2') {
+                
+                sh 'terraform init'
+            }
+                
+            }
+        }
+        stage('plan') {
+            steps {
+                 dir('day1-ec2') {
+                
+                sh 'terraform plan'
+            }
+                
+            }
+        }
+        stage ('apply') {
+            steps{
+                dir('day1-ec2') {
+              
+                sh 'terraform apply -auto-approve'
+            }
+     }
+        }
+        stage ('destroy') {
+            steps{
+                dir('day1-ec2') {
+              
+                sh 'terraform destroy -auto-approve'
+       }
+            }
+    }
+ }
+}
