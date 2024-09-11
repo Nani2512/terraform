@@ -5,5 +5,6 @@ resource "aws_instance" "name" {
     availability_zone = "us-east-1b"
 tags={
 Name ="ec2-instance"
+}
   
 }
