@@ -4,7 +4,7 @@ resource "aws_instance" "name" {
     key_name =var.key
     availability_zone = "us-east-1b"
 tags={
-Name ="ec2-instance"
+Name ="my-ec2-instance"
 }
   
 }
