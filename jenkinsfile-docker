@@ -1,0 +1,19 @@
+pipeline {
+    // agent any
+    agent {
+        label 'slave-1'
+    }
+
+    stages {
+        stage('pull') {
+            steps {
+                sh 'docker pull nginx'
+            }
+        }
+        stage('build-image') {
+            steps {
+                sh 'docker run -dt -p 82:80 nginx'
+            }
+        }
+    }
+}
